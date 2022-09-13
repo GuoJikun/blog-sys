@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "preinstall": "npx only-allow pnpm"
+    "preinstall": "npx only-allow pnpm",
+    "development": "pnpm  --filter blog-client run dev & pnpm --filter blog-service run start:dev"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "MPL2.0"
 }

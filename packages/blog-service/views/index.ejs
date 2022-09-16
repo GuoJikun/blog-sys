@@ -1,0 +1,26 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>App</title>
+</head>
+
+<body>
+    <%- include('template/header.ejs') %>
+        <p>静态内容</p>
+        <div>
+            <% if (articleList.length) { %>
+                <ul>
+                    <% articleList.forEach(function (item) { %>
+                        <%# Notice how the single quotation mark is escaped in the output HTML %>
+                            <li>
+                                <%= item.title %>
+                            </li>
+                            <% }) %>
+                </ul>
+                <% } %>
+        </div>
+        <%- include('template/footer.ejs') %>
+</body>
+
+</html>

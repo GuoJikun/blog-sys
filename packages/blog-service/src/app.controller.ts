@@ -6,19 +6,20 @@ export class AppController {
     constructor(private readonly appService: AppService) {}
 
     @Get()
-    @Version("1")
+    @Version("v1")
     getHello(): string {
         return this.appService.getHello();
     }
 
-    @Get("/index")
+    @Get("")
+    @Version("client")
     @Render("index")
     root() {
         return { message: "Hello world!" };
     }
 
     @Get()
-    @Version("2")
+    @Version("v2")
     getHelloV2(): string {
         return "v2 版本";
     }

@@ -7,9 +7,10 @@ import { VersioningType } from "@nestjs/common";
 async function bootstrap() {
     const app = await NestFactory.create<NestExpressApplication>(AppModule);
     app.setBaseViewsDir(join(__dirname, "..", "views"));
-    app.setViewEngine("hbs");
+    app.setViewEngine("ejs");
     app.enableVersioning({
         type: VersioningType.URI,
+        prefix: "",
     });
     await app.listen(3000);
 }

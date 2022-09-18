@@ -9,6 +9,8 @@ import { TypeOrmModule } from "@nestjs/typeorm";
 import * as Joi from "@hapi/joi";
 
 import { ArticleModule } from "./modules/article.module";
+import { TypeModule } from "./modules/type.module";
+import { UserModule } from "./modules/user.module";
 
 @Module({
     imports: [
@@ -25,6 +27,8 @@ import { ArticleModule } from "./modules/article.module";
         }),
         TypeOrmModule.forRoot(dbConfig),
         ArticleModule,
+        UserModule,
+        TypeModule,
     ],
     controllers: [AppController],
     providers: [AppService],

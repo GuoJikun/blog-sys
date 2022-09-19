@@ -1,16 +1,16 @@
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
-import { Type } from "src/entities/type.entity";
+import { Tag } from "src/common/entities/tag.entity";
 import { Repository } from "typeorm";
 
 @Injectable()
 export class TypeService {
     constructor(
-        @InjectRepository(Type)
-        private data: Repository<Type>
+        @InjectRepository(Tag)
+        private data: Repository<Tag>
     ) {}
 
-    findAll(): Promise<Type[]> {
+    findAll(): Promise<Tag[]> {
         return this.data.find();
     }
 }

@@ -1,6 +1,6 @@
-import { TypeService } from "./../services/type.service";
+import { TypeService } from "./tag.service";
 import { Controller, Get, Version } from "@nestjs/common";
-import { Type } from "src/entities/type.entity";
+import { Tag } from "src/common/entities/tag.entity";
 
 @Controller("type")
 export class TypeController {
@@ -8,7 +8,7 @@ export class TypeController {
 
     @Get()
     @Version("v1")
-    findAll(): Promise<Type[]> {
+    findAll(): Promise<Tag[]> {
         return this.typeService.findAll();
     }
 }

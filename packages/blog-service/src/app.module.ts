@@ -1,23 +1,18 @@
 import { Module } from "@nestjs/common";
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
-import { ServeStaticModule } from "@nestjs/serve-static";
 import { ConfigModule } from "@nestjs/config";
-import { join } from "node:path";
-import dbConfig from "./config/db";
+import dbConfig from "./common/config/db";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import * as Joi from "@hapi/joi";
 
-import { ArticleModule } from "./modules/article.module";
-import { TypeModule } from "./modules/type.module";
-import { UserModule } from "./modules/user.module";
+import { ArticleModule } from "./article/article.module";
+import { TypeModule } from "./tag/tag.module";
+import { UserModule } from "./user/user.module";
+import { PageModule } from "./page/page.module";
 
 @Module({
     imports: [
-        ServeStaticModule.forRoot({
-            rootPath: join(__dirname, "..", "client"),
-            exclude: ["/api*"],
-        }),
         ConfigModule.forRoot({
             isGlobal: true,
             validationSchema: Joi.object({
@@ -29,6 +24,7 @@ import { UserModule } from "./modules/user.module";
         ArticleModule,
         UserModule,
         TypeModule,
+        PageModule,
     ],
     controllers: [AppController],
     providers: [AppService],

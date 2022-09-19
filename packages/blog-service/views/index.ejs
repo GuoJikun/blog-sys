@@ -3,12 +3,15 @@
 <head>
     <meta charset="utf-8" />
     <title>App</title>
+    <link rel="stylesheet" href="/css/var.css">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/header-and-footer.css">
 </head>
 
 <body>
     <%- include('template/header.ejs') %>
-        <p>静态内容</p>
-        <div>
+        <div class="container">
+            <p>静态内容</p>
             <% if (articleList.length) { %>
                 <ul>
                     <% articleList.forEach(function (item) { %>
@@ -19,8 +22,11 @@
                             <% }) %>
                 </ul>
                 <% } %>
+                    <input type="text" placeholder="测试placeholder 颜色">
         </div>
         <%- include('template/footer.ejs') %>
+
+
 </body>
 
 </html>

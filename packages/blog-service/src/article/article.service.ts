@@ -1,7 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
-import { FindOneOptions, Repository } from "typeorm";
-import { Article } from "src/entities/article.entity";
+import { Repository } from "typeorm";
+import { Article } from "src/common/entities/article.entity";
 
 @Injectable()
 export class ArticleService {
@@ -9,11 +9,10 @@ export class ArticleService {
         @InjectRepository(Article)
         private articleRepository: Repository<Article>
     ) {}
-    getHello(): string {
-        return "Hello World!";
-    }
-    findOne(id: FindOneOptions<Article>): Promise<Article> {
-        return this.articleRepository.findOne(id);
+    findOne(id): Promise<Article> {
+        return this.articleRepository.findOneBy({
+            id: id,
+        });
     }
     findAll(): Promise<Article[]> {
         return this.articleRepository.find();

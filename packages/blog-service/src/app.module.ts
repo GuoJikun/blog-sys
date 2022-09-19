@@ -10,6 +10,7 @@ import { ArticleModule } from "./article/article.module";
 import { TypeModule } from "./tag/tag.module";
 import { UserModule } from "./user/user.module";
 import { PageModule } from "./page/page.module";
+import { CommentsModule } from "./comments/comments.module";
 
 @Module({
     imports: [
@@ -25,6 +26,7 @@ import { PageModule } from "./page/page.module";
         UserModule,
         TypeModule,
         PageModule,
+        CommentsModule,
     ],
     controllers: [AppController],
     providers: [AppService],

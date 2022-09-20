@@ -9,8 +9,8 @@ export class ArticleController {
     constructor(private readonly articleService: ArticleService) {}
 
     @Get()
-    findAll(): Promise<Article[]> {
-        return this.articleService.findAll();
+    async findAll(): Promise<Article[]> {
+        return await this.articleService.findAll();
     }
 
     @Get("/:id")

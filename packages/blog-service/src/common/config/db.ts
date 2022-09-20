@@ -18,7 +18,7 @@ const config: { [x: string]: any } = {
     username: "root",
     password: "root123",
     database: "blogs",
-    entities: [Article],
+    entities: ["../entities/*"],
     autoLoadEntities: true,
     synchronize: true,
 };

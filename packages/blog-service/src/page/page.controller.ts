@@ -24,6 +24,12 @@ export class PageController {
         };
     }
 
+    @Get("/articles/add")
+    @Render("article-add")
+    add() {
+        return {};
+    }
+
     @Get("/articles/:id")
     @Render("article-detail")
     async detail(@Param() params) {

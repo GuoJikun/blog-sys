@@ -1,7 +1,9 @@
 <template>
-    <root-header></root-header>
-    <div>
-        <router-view></router-view>
+    <div class="container-front">
+        <root-header></root-header>
+        <div class="container-wrap">
+            <router-view></router-view>
+        </div>
     </div>
 </template>
 
@@ -12,3 +14,10 @@ export default {
     components: { RootHeader },
 };
 </script>
+
+<style lang="scss" scoped>
+.container-wrap {
+    width: 1000px;
+    margin: 0 auto;
+}
+</style>

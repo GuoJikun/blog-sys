@@ -9,14 +9,8 @@ import { AllExceptionsFilter } from "./common/exceptions/base.exception.filter";
 import { HttpExceptionFilter } from "./common/exceptions/http.exception.filter";
 
 async function bootstrap() {
-    const app = await NestFactory.create<NestExpressApplication>(AppModule, {
-        cors: {
-            origin: "*",
-            methods: ["GET", "PUT", "POST"],
-            credentials: true,
-            allowedHeaders: ["Content-Type", "Authorization"],
-        },
-    });
+    const app = await NestFactory.create<NestExpressApplication>(AppModule);
+    app.enableCors();
     app.useGlobalPipes(new ValidationPipe());
     app.useStaticAssets(join(__dirname, "..", "public"));
     app.setBaseViewsDir(join(__dirname, "..", "views"));

@@ -7,6 +7,10 @@ export class Article {
 
     @Column()
     title: string;
+    @Column({
+        length: 200,
+    })
+    abstract: string;
 
     @Column("text")
     content: string;

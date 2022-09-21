@@ -6,6 +6,7 @@ import { formatParam } from "@/utils/utils.js";
 
 // const baseURL = process.env.VUE_APP_AXIOS_BASE_URL;
 const baseURL = "http://localhost:5173/v1";
+// const baseURL = "http://localhost:3000/v1";
 
 const conf = {
     baseURL: baseURL,
@@ -38,7 +39,7 @@ _axios.interceptors.response.use(
                 store.commit("isLogin", false);
                 router.replace("/login");
             }
-            if (!["application/json;charset=UTF-8", "application/json"].includes(response.headers["content-type"])) {
+            if (!["application/json; charset=utf-8", "application/json"].includes(response.headers["content-type"])) {
                 return response;
             } else {
                 return response.data;

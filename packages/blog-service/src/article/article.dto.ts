@@ -1,4 +1,5 @@
 import { IsNotEmpty, IsNumberString } from "class-validator";
+import { Pager } from "../common/dto/public.dto";
 
 export class CreateArticleDto {
     @IsNotEmpty()
@@ -33,3 +34,5 @@ export class FindOneParams {
     @IsNumberString()
     id: number;
 }
+
+export class Page extends Pager {}

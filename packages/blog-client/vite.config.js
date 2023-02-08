@@ -13,13 +13,6 @@ export default defineConfig({
         },
     },
     server: {
-        CORS: true,
-        proxy: {
-            "^/v1/": {
-                target: "http://localhost:3000",
-                changeOrigin: true,
-                rewrite: path => path.replace(/^\/v1/, "/v1/"),
-            },
-        },
+        cors: true,
     },
 });

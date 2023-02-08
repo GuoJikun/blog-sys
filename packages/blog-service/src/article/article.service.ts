@@ -10,7 +10,7 @@ export class ArticleService {
         @InjectRepository(Article)
         private articleRepository: Repository<Article>
     ) {}
-    findOne(id): Promise<Article> {
+    findOne(id: number): Promise<Article> {
         return this.articleRepository.findOneBy({
             id: id,
         });

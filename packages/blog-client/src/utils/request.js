@@ -4,13 +4,13 @@ import { ElMessage } from "element-plus";
 import router from "@/router/index.js";
 import { formatParam } from "@/utils/utils.js";
 
-// const baseURL = process.env.VUE_APP_AXIOS_BASE_URL;
-const baseURL = "http://localhost:5173/v1";
+// const baseURL = import.meta.env.VITE_APP_AXIOS_BASE_URL;
+const baseURL = "http://localhost:3000/v1";
 // const baseURL = "http://localhost:3000/v1";
 
 const conf = {
     baseURL: baseURL,
-    withCredentials: true,
+    // withCredentials: true,
     timeout: 15 * 1000,
 };
 

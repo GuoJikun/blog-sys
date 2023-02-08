@@ -1,57 +1,62 @@
 <template>
-    <Editor class="editor" :value="value" :plugins="plugins" @change="handleChange" />
+    <div class="editor">
+        <Editor
+            class="editor-item"
+            mode="split"
+            :value="value"
+            :plugins="plugins"
+            @change="handleChange"
+            :uploadImages="uploadImage"
+        ></Editor>
+    </div>
 </template>
 
 <script>
+import { defineComponent, ref } from "vue";
 import { Editor } from "@bytemd/vue-next";
 import gfm from "@bytemd/plugin-gfm";
+import highlight from "@bytemd/plugin-highlight";
+import "bytemd/dist/index.css";
+import "highlight.js/styles/default.css";
 
-const plugins = [
-    gfm(),
-    // Add more plugins here
-];
-
-export default {
+export default defineComponent({
     components: { Editor },
-    data() {
-        return { value: "", plugins };
+    setup() {
+        const value = ref("");
+        const plugins = ref([gfm(), highlight()]);
+        const handleChange = v => {
+            value.value = v;
+        };
+        const uploadImage = imgList => {
+            console.log(imgList);
+            return new Promise((resolve, reject) => {
+                resolve(
+                    imgList.map(c => {
+                        const url = URL.createObjectURL(c);
+                        return { url, alt: c.name, raw: c };
+                    })
+                );
+            });
+        };
+        return {
+            value,
+            plugins,
+            handleChange,
+            uploadImage,
+        };
     },
-    methods: {
-        handleChange(v) {
-            this.value = v;
-        },
-    },
-};
+});
 </script>
 
 <style lang="scss" scoped>
 .editor {
     height: 100vh;
-    border: 1px solid var(--el-border-color);
     font-size: 14px;
-    :deep(.bytemd-toolbar),
-    :deep(.bytemd-toolbar-left),
-    :deep(.bytemd-toolbar-right),
-    :deep(.bytemd-status) {
-        display: flex;
-        align-content: center;
+    &-item {
+        height: 100%;
     }
-    :deep(.bytemd-toolbar) {
-        justify-content: space-between;
-        border-bottom: 1px solid var(--el-border-color);
-        padding: 12px 0;
-    }
-    :deep(.bytemd-toolbar-icon) {
-        display: inline-flex;
-        margin: 0 6px;
-    }
-    :deep(.bytemd-status) {
-        border-top: 1px solid var(--el-border-color);
-        justify-content: space-between;
-        padding: 6px 0;
-    }
-    :deep(.bytemd-hidden) {
-        display: none;
+    :deep(.bytemd) {
+        height: 100%;
     }
 }
 div[data-tippy-root][id^="tippy-"] {

@@ -9,10 +9,11 @@
     <title>
         写文章
     </title>
-    <link rel="stylesheet" href="https://unpkg.com/bytemd/dist/index.css" />
+    <link rel="stylesheet" href="https://unpkg.com/bytemd@1.20.2/dist/index.css" />
     <link rel="stylesheet" href="https://unpkg.com/github-markdown-css" />
-    <script src="https://unpkg.com/bytemd"></script>
-    <script src="https://unpkg.com/@bytemd/plugin-gfm"></script>
+    <script src="https://unpkg.com/bytemd@1.20.2/dist/index.umd.js"></script>
+    <script src="https://unpkg.com/@bytemd/plugin-gfm@1.20.2/dist/index.umd.js"></script>
+    <script src="https://unpkg.com/@bytemd/plugin-highlight@1.20.2/dist/index.umd.js"></script>
 </head>
 
 <body>
@@ -22,17 +23,19 @@
     </div>
 </body>
 <script>
-    var plugins = [bytemdPluginGfm()];
-    var editor = new bytemd.Editor({
-        target: document.querySelector('#editor'),
-        props: {
-            value: '# heading\n\nparagraph\n\n> blockquote',
-            plugins: plugins
-        }
-    });
-    editor.$on('change', function (e) {
-        editor.$set({ value: e.detail.value });
-    });
+    document.onload = () => {
+        var plugins = [bytemdPluginGfm()];
+        var editor = new bytemd.Editor({
+            target: document.querySelector('#editor'),
+            props: {
+                value: '# heading\n\nparagraph\n\n> blockquote',
+                plugins: plugins
+            }
+        });
+        editor.$on('change', function (e) {
+            editor.$set({ value: e.detail.value });
+        });
+    }
 </script>
 
 </html>

@@ -20,7 +20,6 @@ export class AllExceptionsFilter implements ExceptionFilter {
             path: httpAdapter.getRequestUrl(ctx.getRequest()),
             message: new ServiceUnavailableException().getResponse(),
         };
-
         httpAdapter.reply(ctx.getResponse(), responseBody, httpStatus);
     }
 }

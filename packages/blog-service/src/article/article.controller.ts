@@ -1,21 +1,22 @@
-import { Controller, Get, HttpCode, Param, Post, Body } from "@nestjs/common";
+import { Controller, Get, HttpCode, Param, Post, Body, Query } from "@nestjs/common";
 
 import { ArticleService } from "./article.service";
 import { Article } from "../common/entities/article.entity";
 import { CreateArticleDto, FindOneParams, Page } from "./article.dto";
 
-@Controller("article")
+@Controller("/article")
 export class ArticleController {
     constructor(private readonly articleService: ArticleService) {}
-
-    @Get()
-    async findAll(params: Page): Promise<Article[]> {
-        return await this.articleService.findAll(params);
-    }
 
     @Get("/:id")
     fineOne(@Param() params: FindOneParams): Promise<Article> {
         return this.articleService.findOne(params.id);
+    }
+
+    @Get("/")
+    findAll(@Query() params: Page): Promise<Article[]> {
+        console.log(params);
+        return this.articleService.findAll(params);
     }
 
     @Post("/add")

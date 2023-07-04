@@ -2,29 +2,55 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>App</title>
+    <title>博客列表</title>
     <link rel="stylesheet" href="/css/var.css">
     <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="/css/header-and-footer.css">
+    <style>
+        .container {
+            width: 80vw;
+        }
+
+        @media screen and (max-width: 768px) {
+            .container {
+                width: 100vw;
+            }
+        }
+
+        .article-item {
+            margin: 12px;
+        }
+
+        .article-item-title {
+            color: var(--bs-color-primary);
+        }
+
+        .article-item-title:hover {
+            color: var(--bs-color-primary-light-3);
+        }
+    </style>
 </head>
 
 <body>
-    <%- include('template/header.ejs') %>
-        <div class="container">
-            <p>静态内容</p>
+    <div class="container">
+        <%- include('template/header.ejs') %>
             <% if (articleList.length) { %>
                 <ul>
                     <% articleList.forEach(function (item) { %>
                         <%# Notice how the single quotation mark is escaped in the output HTML %>
-                            <li>
-                                <%= item.title %>
+                            <li class="article-item">
+                                <a href="/page/articles/<%= item.id %>" class="article-item-title">
+                                    <%= item.title %>
+                                </a>
+                                <p>
+                                    <%= item.abstract %>
+                                </p>
                             </li>
                             <% }) %>
                 </ul>
                 <% } %>
-        </div>
-        <%- include('template/footer.ejs') %>
-
+                    <%- include('template/footer.ejs') %>
+    </div>
 
 </body>
 

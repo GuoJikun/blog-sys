@@ -12,8 +12,8 @@
 </head>
 
 <body>
-    <%- include('template/header.ejs') %>
-        <div class="container">
+    <div class="container">
+        <%- include('template/header.ejs') %>
             <div class="article-wrap">
                 <h1 class="article-title">
                     <%= title %>
@@ -23,11 +23,8 @@
                 </div>
             </div>
 
-
-        </div>
-        <%- include('template/footer.ejs') %>
-
-
+            <%- include('template/footer.ejs') %>
+    </div>
 </body>
 
 </html>

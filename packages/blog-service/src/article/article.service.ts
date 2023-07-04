@@ -26,6 +26,17 @@ export class ArticleService {
         });
     }
 
+    findByLimit(params: Page): Promise<Article[]> {
+        return this.articleRepository.find({
+            select: ["title", "abstract", "id", "creator"],
+            order: {
+                id: "DESC",
+            },
+            skip: params.page,
+            take: params.size,
+        });
+    }
+
     add(data: CreateArticleDto) {
         this.articleRepository.insert(data);
     }

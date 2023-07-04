@@ -1,7 +1,6 @@
 import { Controller, Get, Param, Query, Render, Version } from "@nestjs/common";
 import { PageService } from "./page.service";
 import { ArticleService } from "./../article/article.service";
-import { version } from "os";
 
 @Controller({
     version: "page",
@@ -19,7 +18,7 @@ export class PageController {
     @Get("/articles")
     @Render("article")
     async article(@Query() params) {
-        const article = await this.articleService.findAll(params);
+        const article = await this.articleService.findByLimit(params);
         return {
             articleList: article,
         };

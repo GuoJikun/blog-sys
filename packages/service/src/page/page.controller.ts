@@ -1,4 +1,4 @@
-import { Controller, Get, Param, Query, Render, Version } from "@nestjs/common";
+import { Controller, Get, Param, Query, Render } from "@nestjs/common";
 import { PageService } from "./page.service";
 import { ArticleService } from "./../article/article.service";
 
@@ -6,11 +6,14 @@ import { ArticleService } from "./../article/article.service";
     version: "page",
 })
 export class PageController {
-    constructor(private readonly pageService: PageService, private readonly articleService: ArticleService) {}
+    constructor(
+        private readonly pageService: PageService,
+        private readonly articleService: ArticleService
+    ) {}
 
     @Get()
     @Render("index")
-    async findAll1(params) {
+    async findAll1(@Query() params) {
         const articleList = await this.articleService.findAll(params);
         return { articleList: articleList };
     }

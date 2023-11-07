@@ -1,4 +1,4 @@
-import { Article } from "../entities/article.entity";
+// import { Article } from "../entities/article.entity";
 
 // const config: { [x: string]: any } = {
 //     type: "mysql",
@@ -14,7 +14,7 @@ import { Article } from "../entities/article.entity";
 const config: { [x: string]: any } = {
     type: "mysql",
     host: "localhost",
-    port: 33060,
+    port: 3306,
     username: "root",
     password: "root123",
     database: "blogs",
